@@ -26,7 +26,7 @@ public class SubscriptionTypeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SubscriptionType> findById(@PathVariable("id") Long id) {
+    public ResponseEntity<SubscriptionType> findById(@PathVariable Long id) {
 	return ResponseEntity.status(HttpStatus.OK).body(subscriptionTypeService.findById(id));
     }
 
