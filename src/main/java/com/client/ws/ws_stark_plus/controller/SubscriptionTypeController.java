@@ -18,6 +18,8 @@ import com.client.ws.ws_stark_plus.dto.SubscriptionTypeDto;
 import com.client.ws.ws_stark_plus.model.SubscriptionType;
 import com.client.ws.ws_stark_plus.service.SubscriptionTypeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/subscription-type")
 public class SubscriptionTypeController {
@@ -36,12 +38,12 @@ public class SubscriptionTypeController {
     }
 
     @PostMapping
-    public ResponseEntity<SubscriptionType> create(@RequestBody SubscriptionTypeDto dto) {
+    public ResponseEntity<SubscriptionType> create(@RequestBody @Valid SubscriptionTypeDto dto) {
 	return ResponseEntity.status(HttpStatus.CREATED).body(subscriptionTypeService.create(dto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SubscriptionType> update(@PathVariable Long id, @RequestBody SubscriptionTypeDto dto) {
+    public ResponseEntity<SubscriptionType> update(@PathVariable Long id, @RequestBody @Valid SubscriptionTypeDto dto) {
 	return ResponseEntity.status(HttpStatus.OK).body(subscriptionTypeService.update(id, dto));
     }
 
